@@ -83,21 +83,8 @@ class NotebookLoader(object):
                     runcount = self.shell.execution_count
                     hcode = highlight(code,lexer,formatter)
                     preface = '\nIn ['+str(runcount+1)+']:\n'
-
-                    print('hulk')
-                    if 'class' == code.lstrip()[0:5] or \
-                       'def' == code.lstrip()[0:3] or\
-                       'from' == code.lstrip()[0:4] or\
-                       'import' == code.lstrip()[0:6]:
+                    if '#import' == code.lstrip()[0:7]:
                         self.shell.run_cell(code, store_history=True)
-                        continue
-                    if len(code.lstrip()) == 0:
-                        continue
-                    more = self.shell.ask_yes_no(preface+hcode+'\nSay y/n to running:')
-                    if more:
-                        # run the code in the module
-                        self.shell.run_cell(code, store_history=True)
-            print('You can load lines 1-'+str(self.shell.execution_count))
         finally:
             self.shell.user_ns = save_user_ns
         return mod

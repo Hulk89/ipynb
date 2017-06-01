@@ -16,6 +16,6 @@ This was started as an import module by [Adrian Price-Whelan][0], concatenated b
 ## Installation
 
 ```
-git clone https://github.com/thejohnhoffer/ipynb.git
+git clone https://github.com/Hulk89/ipynb.git
 pip install -e ipynb
 ```
